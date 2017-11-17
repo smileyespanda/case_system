@@ -1,0 +1,148 @@
+<info> ~~~~~~~~~本次使用的环境配置是：零售自动化测试环境~~~~~~~~~~
+<warning> 本次环境开启了write_mode！！！
+<info> 本次环境的基础url: http://172.16.0.233:12346/ls5.3.011
+<info> 开始初始化环境变量
+<info> 初始化环境变量成功~
+<info> 开始初始化数据库
+<info> 成功连接数据库~<info> 开始替换INIT_SQL中的变量 
+<info> 开始重置环境变量
+<info> 重置环境变量成功~
+<info> 关闭数据库链接成功
+<info> 开始设置group的PreVar
+<info> 开始替换Group.PreVar中的变量 
+<info> **************开始执行用例********************
+<info> group_id：2; group_name：初始用例组
+<info> case_id：1; case_name：登录
+<info> 开始设置PostVar 
+<info> 开始替换PostVar中的变量
+<info> 开始替换EnvParams中的变量 
+<info> 用例设置全局变量设置成功！ 
+<info> -----------开始执行步骤------------------
+<info> id：20; name：打开登录界面
+<info> 开始发送请求 
+<info> 开始替换Step.RequestUrl中的变量 
+<info> 开始替换request参数中的变量 
+<info> 开始替换Step.RequestHeaders中的变量 
+<info> 开始替换Step.RequestQuery中的变量 
+<info> 开始替换Step.RequestBody中的变量 
+<info> 请求的url: http://172.16.0.233:12346/ls5.3.011/
+<info> 请求发送成功！ 
+<info> 开始预处理PostVar
+<info> 获取接口返回的信息：信息源: text；信息类型: html
+<info> -----------步骤执行成功！-----------------！
+<info> -----------开始执行步骤------------------
+<info> id：21; name：获取验证码
+<info> 开始发送请求 
+<info> 开始替换Step.RequestUrl中的变量 
+<info> 开始替换request参数中的变量 
+<info> 开始替换Step.RequestHeaders中的变量 
+<info> 开始替换Step.RequestQuery中的变量 
+<info> 开始替换Step.RequestBody中的变量 
+<info> 请求的url: http://172.16.0.233:12346/ls5.3.011/web/jsp/image.jsp
+<info> 请求发送成功！ 
+<info> 开始预处理PostVar
+<info> 获取接口返回的信息：信息源: headers["Set-Cookie"]；信息类型: string
+<info> 开始替换Step.PostVar中的变量 
+<info> 设置变量：yzm；表达式: ['byszx_login=', ';', 0]
+<info> 设置成功；变量值：2508
+<info> PostVar处理成功！
+<info> 开始校验数据AssertVar
+<info> 开始替换AssertVar中的变量
+<info> 开始替换Step.AssertVar中的变量 
+<info> 校验变量：!a1, 表达式："2508"==""
+<info> AssertVar数据校验成功！
+<info> -----------步骤执行成功！-----------------！
+<info> -----------开始执行步骤------------------
+<info> id：22; name：点击登录
+<info> 开始发送请求 
+<info> 开始替换Step.RequestUrl中的变量 
+<info> 开始替换request参数中的变量 
+<info> 开始替换Step.RequestHeaders中的变量 
+<info> 开始替换Step.RequestQuery中的变量 
+<info> 开始替换Step.RequestBody中的变量 
+<info> 请求的url: http://172.16.0.233:12346/ls5.3.011/login.action
+<info> 请求发送成功！ 
+<info> 开始预处理PostVar
+<info> 获取接口返回的信息：信息源: text；信息类型: html
+<info> -----------步骤执行成功！-----------------！
+<info> -----------开始执行步骤------------------
+<info> id：23; name：初始化菜单
+<info> 开始发送请求 
+<info> 开始替换Step.RequestUrl中的变量 
+<info> 开始替换request参数中的变量 
+<info> 开始替换Step.RequestHeaders中的变量 
+<info> 开始替换Step.RequestQuery中的变量 
+<info> 开始替换Step.RequestBody中的变量 
+<info> 请求的url: http://172.16.0.233:12346/ls5.3.011/login!getJsonMenuXml.action?xtmenuType=&_dc=1489370687044&node=xtgl
+<info> 请求发送成功！ 
+<info> 开始预处理PostVar
+<info> 获取接口返回的信息：信息源: text；信息类型: html
+<info> -----------步骤执行成功！-----------------！
+<info> ***********用例执行成功************************* 
+<info> 开始设置group的PreVar
+<info> 开始替换Group.PreVar中的变量 
+<info> **************开始执行用例********************
+<info> group_id：3; group_name：批发管理-批发日报
+<info> case_id：17; case_name：查询批发日报
+<info> 开始设置PostVar 
+<info> 开始替换PostVar中的变量
+<info> 开始替换EnvParams中的变量 
+<info> 用例设置全局变量设置成功！ 
+<info> -----------开始执行步骤------------------
+<info> id：17; name：打开批发日报菜单
+<info> 开始发送请求 
+<info> 开始替换Step.RequestUrl中的变量 
+<info> 开始替换request参数中的变量 
+<info> 开始替换Step.RequestHeaders中的变量 
+<info> 开始替换Step.RequestQuery中的变量 
+<info> 开始替换Step.RequestBody中的变量 
+<info> 请求的url: http://172.16.0.233:12346/ls5.3.011/commonCx.action?operate=cx_wl_pf&logmenuid=72&logmenuname=%C5%FA%B7%A2%C8%D5%B1%A8&gsdm=33001&username=%B3%AC%BC%B6%D3%C3%BB%A7
+<info> 请求发送成功！ 
+<info> 开始预处理PostVar
+<info> 获取接口返回的信息：信息源: text；信息类型: string
+<info> 开始替换Step.PostVar中的变量 
+<info> 设置变量：menu_id；表达式: ['logmenuid = "', '"', 0]
+<info> 设置成功；变量值：72
+<info> PostVar处理成功！
+<info> 开始校验数据AssertVar
+<info> 开始替换AssertVar中的变量
+<info> 开始替换Step.AssertVar中的变量 
+<info> 校验变量：a1, 表达式：72==72
+<info> AssertVar数据校验成功！
+<info> -----------步骤执行成功！-----------------！
+<info> -----------开始执行步骤------------------
+<info> id：16; name：点击查询批发日报
+<info> 开始发送请求 
+<info> 开始替换Step.RequestUrl中的变量 
+<info> 开始替换request参数中的变量 
+<info> 开始替换Step.RequestHeaders中的变量 
+<info> 开始替换Step.RequestQuery中的变量 
+<info> 开始替换Step.RequestBody中的变量 
+<info> 请求的url: http://172.16.0.233:12346/ls5.3.011/report/reportJsp/showReport.jsp?raq=%2F0012_cx_wl_pf.raq&1=1&FSRQQ=2017-03-08&FSRQZ=2017-03-15&XSLJE=false&ASPHZXJ=false&GYSXS=false&CHECKCHSL=false&checkFsrq=true&CRKFS=%C5%FA%B7%A2&YCCKJ=N&QYZJM=N&QYBM=N&logmenuid=72&logmenuname=%C5%FA%B7%A2%C8%D5%B1%A8
+<info> 请求发送成功！ 
+<info> 开始预处理PostVar
+<info> 获取接口返回的信息：信息源: text；信息类型: html
+<info> 开始替换Step.PostVar中的变量 
+<info> 设置变量：menu_id；表达式: ['name', 'logmenuid', 0]
+<info> 设置成功；变量值：72
+<info> PostVar处理成功！
+<info> 开始校验数据AssertVar
+<info> 开始替换AssertVar中的变量
+<info> 开始替换Step.AssertVar中的变量 
+<info> 校验变量：a1, 表达式：72==72
+<info> AssertVar数据校验成功！
+<info> -----------步骤执行成功！-----------------！
+<info> -----------开始执行步骤------------------
+<info> id：22; name：点击登录
+<info> 开始发送请求 
+<info> 开始替换Step.RequestUrl中的变量 
+<info> 开始替换request参数中的变量 
+<info> 开始替换Step.RequestHeaders中的变量 
+<info> 开始替换Step.RequestQuery中的变量 
+<info> 开始替换Step.RequestBody中的变量 
+<info> 请求的url: http://172.16.0.233:12346/ls5.3.011/login.action
+<info> 请求发送成功！ 
+<info> 开始预处理PostVar
+<info> 获取接口返回的信息：信息源: text；信息类型: html
+<info> -----------步骤执行成功！-----------------！
+<info> ***********用例执行成功************************* 

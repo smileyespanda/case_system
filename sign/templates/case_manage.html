@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/content_manage/">Case Manage System</a>
+        </div>
+        <div id="navbar1" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+              <li><a href="/content_manage/">菜单</a></li>
+              <li><a href="/group_manage/">单个执行用例组</a></li>
+              <li class="active"><a href="/case_manage/">用例管理</a></li>
+              <li><a href="/step_manage/">步骤管理</a></li>
+              <li><a href="/whole_manage/">批量执行用例</a></li>
+            <!--<li ><a href="#">执行单个用例</a></li>-->
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+           <li><a href="#">{{user}}</a></li>
+           <li><a href="/logout/">退出</a></li>
+         </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container theme-showcase" role="main">
+
+      <!--发布会表单-->
+      <div class="page-header">
+      </div><!--/.navbar-collapse -->
+          <div class="form-group">
+            <font color="red">执行线上用例前，请确保该环境配置没有开启Write Mode！</font>
+        </div>
+        <div class="form-group">
+        </div>
+        <div id="navbar" class="row">
+          <form class="navbar-form" method="get" action="/search_case/">
+            <div class="form-group">
+              <input name="name" type="text" placeholder="名称" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">搜索</button>
+          </form>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                  <th>id</th>
+                  <th>名称</th>
+                  <th>添加步骤</th>
+                  <th>结果</th>
+                  <th>调试信息</th>
+                  <th>步骤结果</th>
+                  <th>执行</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for case in cases %}
+                <tr>
+                    <td>{{ case.id }}</td>
+                    <td>
+                        <a href="/admin/sign/case/{{ case.id }}/change/?_popup=1"  target="_blank">{{ case.name }}</a></td>
+                    </td>
+                    <td>
+                        <a href="/admin/sign/casestep/?case__id__exact={{case.id}}"  target="_blank">添加</a></td>
+                    </td>
+                    {% if case.result %}
+                        <td><img src="/static/admin/img/icon-yes.svg" alt="True"></td>
+                    {% else %}
+                        <td><img src="/static/admin/img/icon-no.svg" alt="False"></td>
+                    {% endif %}
+                    <td>{{ case.msg }}</td>
+                    <td>
+                        <a href="/case_step_manage/{{ case.id }}/"  target="_self"><font color="blue">查看</font></a></td>
+                    </td>
+                    <td>
+                        <a href="/run_case/{{ case.id }}/"  target="_self">Go</a></td>
+                        <!--<form class="navbar-form" method="get" action="/run_case/{{ case.id }}/">
+                            <button type="submit" class="btn btn-success">Go</button>
+                        </form>-->
+                    </td>
+                    <!--<td><a href="/sign_index2/{{ event.id }}/"  target="{{ event.id }}_self">sign_web</a></td>-->
+                </tr>
+             {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+        <!--<div class="row">
+            <form class="navbar-form" method="get" target="_self" action="/admin/sign/case/add/">
+                <button type="submit" class="btn btn-success">创建用例</button>
+            </form>
+        </div>-->
+</div>
+{% endblock %}

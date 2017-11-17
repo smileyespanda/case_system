@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/content_manage/">Case Manage System</a>
+        </div>
+        <div id="navbar1" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/content_manage/">菜单</a></li>
+
+              <li><a href="/group_manage/">单个执行用例组</a></li>
+            <!--<li><a href="/case_manage/">用例管理</a></li>
+            <li><a href="/step_manage/">步骤管理</a></li>-->
+             <li><a href="/whole_manage/">批量执行用例</a></li>
+              <!--<li><a href="/case_manage/">执行单个用例</a></li>-->
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+           <li><a href="#">{{user}}</a></li>
+           <li><a href="/logout/">退出</a></li>
+         </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container theme-showcase" role="main">
+
+      <!--发布会表单-->
+      <div class="page-header">
+        <div id="navbar" class="navbar-collapse collapse">
+        </div><!--/.navbar-collapse -->
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <table class="table table-striped">
+            <thead>
+            </thead>
+            <tbody>
+            <tr><td><font color="green">公用数据</font></a></td></tr>
+            <tr><td><a href="/admin/sign/envparam/"  target="_blank">>> 管理环境变量</a></td></tr>
+            <tr><td><a href="/admin/sign/config/"  target="_blank">>> 配置环境
+              </a><font color="red">（配置线上环境，请不要开启init db！）</font></td></tr>
+            <!--<tr><td><a href="/group_manage/"  target="_self">第一步 >> 创建用例组</a></td></tr>-->
+            <tr><td><font color="green">创建基础数据</font></a></td></tr>
+            <tr><td><a href="/admin/sign/group/"  target="_blank">>> 创建用例组</a></td></tr>
+            <tr><td><a href="/admin/sign/groupcase/"  target="_blank">>> 为用例组创建用例 </a></td></tr>
+            <tr><td><a href="/admin/sign/casestep/"  target="_blank">>> 为用例创建步骤</a></td></tr>
+            <!--<tr><td><a href="/admin/sign/postprocessor/"  target="_blank">
+              <font color="blue">4.创建后置处理器管理</font></a></td></tr>-->
+            <tr><td><font color="green">工具箱</font></a></td></tr>
+            <tr><td>
+              <a href="/group_manage/"  target="_self"><font color="blue">>> 用例组关联用例</font></a>
+            </td></tr>
+            <tr><td>
+              <a href="/copy_manage/"  target="_self"><font color="blue">>> 复制数据</font></a>
+            </td></tr>
+            <tr><td>
+              <a href="/form_to_dict/"  target="_self"><font color="blue">>> 格式化数据</font></a>
+            </td></tr>
+            <tr><td>
+              <a href="/show_init_sql/"  target="_self"><font color="blue">>> 查看初始化数据库sql</font></a>
+            </td></tr>
+            <tr><td>
+              <a href="/show_app_log/"  target="_self"><font color="blue">>> 查看运行日志</font></a>
+            </td></tr>
+            <tr><td></td></tr>
+
+            <!--<tr><td><a href="/case_manage/"  target="_self">第二步 >> 为用例添加步骤</a></td></tr>
+            <tr><td><a href="/step_manage/"  target="_self">第三步 >> 为步骤添加后置处理器</a></td></tr>-->
+
+            <!--<tr><td><a href="/admin/sign/postprocessor/"  target="_blank">批量编辑理器</a></td></tr>-->
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+</div>
+{% endblock %}

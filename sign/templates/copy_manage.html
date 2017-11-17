@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/content_manage/">Case Manage System</a>
+        </div>
+        <div id="navbar3" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/content_manage/">菜单</a></li>
+
+              <li><a href="/group_manage/">单个执行用例组</a></li>
+            <!--<li><a href="/case_manage/">用例管理</a></li>
+            <li><a href="/step_manage/">步骤管理</a></li>-->
+             <li><a href="/whole_manage/">批量执行用例</a></li>
+              <!--<li><a href="/case_manage/">执行单个用例</a></li>-->
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+           <li><a href="#">{{user}}</a></li>
+           <li><a href="/logout/">退出</a></li>
+         </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container theme-showcase" role="main">
+
+      <div class="page-header">
+        <div id="navbar" class="navbar-collapse collapse">
+        </div><!--/.navbar-collapse -->
+      </div>
+
+
+      <div id="navbar2" class="row">
+          <div class="navbar-form">
+              <div class="navbar-form" >
+                    <label>复制用例组</label>
+                  <font color="gray"><li>源组：已经创建好的用例组名称</li>
+                <li>目标组：新建用例组的名称，不能与已有用例组同名</li>
+                <li>目的：新建用例组，并将源组中的用例复制过去</li></font>
+                <font color="red"><li>注意：目标组格式必须如“批发管理-批发日报”</li></font>
+              </div>
+
+            </div>
+
+          <form class="navbar-form" method="post" action="/copy_group/">
+
+            <div class="form-group">
+              <input name="group_source" type="text" placeholder="源组"
+                     class="form-control" value={{source_group}}>
+            </div>
+            <div class="form-group">
+              <label> >> </label>
+            </div>
+            <div class="form-group">
+              <input name="group_target" type="text" placeholder="目标组"
+                     class="form-control" value={{target_group}}>
+            </div>
+            <button type="submit" class="btn btn-success">复制用例组</button>
+          </form>
+
+          <div class="page-header">
+        <div id="navbar1" class="navbar-collapse collapse">
+        </div><!--/.navbar-collapse -->
+      </div>
+
+         <div class="navbar-form">
+              <div class="navbar-form">
+                    <label>复制用例</label>
+                   <font color="gray"><li>复制源：已经创建好的用例名称</li>
+                <li>目标：需要创建的用例名称，不能与已有用例同名</li>
+                <li>目的：新建用例，并将复制源中的有效步骤复制过去</li></font>
+              </div>
+
+            </div>
+        <form class="navbar-form" method="post" action="/copy_case/">
+
+            <div class="form-group">
+              <input name="case_source" type="text" placeholder="复制源"
+                     class="form-control" value={{source_case}}>
+            </div>
+          <div class="form-group">
+              <label> >> </label>
+            </div>
+            <div class="form-group">
+              <input name="case_target" type="text" placeholder="目标" class="form-control" value={{target_case}}>
+            </div>
+            <button type="submit" class="btn btn-success">复制用例&nbsp;&nbsp;&nbsp;</button>
+          </form>
+
+        </div>
+
+        <div class="page-header">
+        <div id="id1" class="navbar-collapse collapse">
+        </div><!--/.navbar-collapse -->
+            <label> 调试信息 </label>
+      </div>
+        {% if tag is True %}
+        <font color="green">
+            <textarea id="msg1" class="vLargeTextField" cols="69" maxlength="1000" name="msg" rows="10">{{ msg }}
+            </textarea>
+        </font>
+        {% else %}
+        <font color="red">
+            <textarea id="msg" class="vLargeTextField" cols="69" maxlength="1000" name="msg" rows="10">{{ msg }}
+            </textarea>
+        </font>
+        {% endif %}
+
+
+
+
+
+
+</div>
+{% endblock %}

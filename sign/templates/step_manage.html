@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/content_manage/">Case Manage System</a>
+        </div>
+        <div id="navbar1" class="row">
+          <ul class="nav navbar-nav">
+            <li><a href="/content_manage/">菜单</a></li>
+              <li><a href="/group_manage/">单个执行用例组</a></li>
+              <li><a href="/case_manage/">用例管理</a></li>
+            <li  class="active"><a href="/step_manage/">步骤管理</a></li>
+              <li><a href="/whole_manage/">批量执行用例</a></li>
+
+            <!--<li ><a href="#">执行单个用例</a></li>-->
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+           <li><a href="#">{{user}}</a></li>
+           <li><a href="/logout/">退出</a></li>
+         </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container theme-showcase" role="main">
+
+      <!--发布会表单-->
+      <div class="page-header">
+        <div id="navbar" class="row">
+          <form class="navbar-form" method="get" action="/search_step/{{case_id}}">
+            <div class="form-group">
+              <input name="name" type="text" placeholder="名称" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">搜索</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                  <th>id</th>
+                  <th>名称</th>
+                  <th>状态</th>
+                  <!--<th>添加后置处理器</th>-->
+                  <th>结果</th>
+                  <th>信息</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              {% for step in steps %}
+                <tr>
+                    <td>{{ step.id }}</td>
+                    <td>
+                        <a href="/admin/sign/step/{{ step.id }}/change/?_popup=1"  target="_blank">{{ step.name }}</a>
+                    </td>
+                    {% if step.status %}
+                        <td><img src="/static/admin/img/icon-yes.svg" alt="True"></td>
+                    {% else %}
+                        <td><img src="/static/admin/img/icon-no.svg" alt="False"></td>
+                    {% endif %}
+                     <!--<td>
+                        <a href="/admin/sign/steppostprocessor/?step__id__exact={{step.id}}"  target="_blank">添加</a>
+                    </td>-->
+                    {% if step.result %}
+                        <td><img src="/static/admin/img/icon-yes.svg" alt="True"></td>
+                    {% else %}
+                        <td><img src="/static/admin/img/icon-no.svg" alt="False"></td>
+                    {% endif %}
+                    <td>{{ step.msg }}</td>
+
+                    <!--
+                    <td>
+                        <form class="navbar-form" method="get" action="/run_step/{{ step.id }}/">
+                            <button type="submit" class="btn btn-success">Go</button>
+                        </form>
+                    </td>
+                    -->
+                    <!--<td><a href="/sign_index2/{{ event.id }}/"  target="{{ event.id }}_blank">sign_web</a></td>-->
+                </tr>
+             {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+        <!--
+        <div class="row">
+            <form class="navbar-form" method="get" target="_blank" action="/admin/sign/step/add/">
+                <button type="submit" class="btn btn-success">创建步骤</button>
+            </form>
+        </div>
+        -->
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/content_manage/">Case Manage System</a>
+        </div>
+        <div id="navbar1" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/content_manage/">菜单</a></li>
+
+              <li><a href="/group_manage/">单个执行用例组</a></li>
+            <!--<li><a href="/case_manage/">用例管理</a></li>
+            <li><a href="/step_manage/">步骤管理</a></li>-->
+             <li><a href="/whole_manage/">批量执行用例</a></li>
+              <!--<li><a href="/case_manage/">执行单个用例</a></li>-->
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+           <li><a href="#">{{user}}</a></li>
+           <li><a href="/logout/">退出</a></li>
+         </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container theme-showcase" role="main">
+
+      <div class="page-header">
+        <div id="navbar" class="navbar-collapse collapse">表单数据转化为字典格式
+        </div><!--/.navbar-collapse -->
+      </div>
+          <form class="navbar-form" method="post" action="/form_to_dict/">
+          <fieldset class="module aligned ">
+            <div >
+                <div>
+                    <textarea class="vLargeTextField" cols="70" id="source" name="source" rows="10"
+                    placeholder="source">{{ source }}</textarea>
+                </div>
+            </div>
+        </fieldset>
+
+              <input value="格式化" name="action" type="submit">
+              <!--<button type="submit" class="btn btn-success">格式化</button>-->
+          <fieldset class="module aligned ">
+            <div >
+                <!--<label for="result">Result:</label>-->
+                <div>
+
+                    <textarea class="vLargeTextField" cols="70" id="result" name="result" rows="10"
+                     placeholder="Result">{{ result }}</textarea>
+                </div>
+            </div>
+        </fieldset>
+        </form>
+
+        </div>
+
+
+
+
+
+
+</div>
+{% endblock %}

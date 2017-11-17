@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/content_manage/">Case Manage System</a>
+        </div>
+        <div id="navbar1" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+              <li ><a href="/content_manage/">菜单</a></li>
+              <li><a href="/group_manage/{{ group_id }}">单个执行用例组</a></li>
+              <li  class="active"><a href="#">用例管理</a></li>
+            <!--<li><a href="/step_manage/">步骤管理</a></li>-->
+              <li><a href="/whole_manage/">批量执行用例</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+           <li><a href="#">{{user}}</a></li>
+           <li><a href="/logout/">退出</a></li>
+         </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container theme-showcase" role="main">
+
+      <!--发布会表单-->
+        <div id="navbar" class="row">
+          <form class="navbar-form" method="get" >
+            <div class="form-group">
+              当前用例组：<a href="/admin/sign/group/{{ group_id }}/change/?_popup=1"  target="_blank">
+                  <font color="blue"> {{ group_name }}</font>
+              </a>
+            </div>
+
+          </form>
+
+      </div>
+
+
+        <div id="navbar" class="row">
+          <form class="navbar-form" method="get" action="/search_group_case/{{group_id}}">
+            <div class="form-group">
+              <input name="name" type="text" placeholder="名称" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">搜索</button>
+          </form>
+
+      </div>
+      <div class="page-header">
+      </div>
+         <!-- <div class="form-group">
+            <font color="red">执行线上用例前，请确保该环境配置没有开启Write Mode！</font>
+        </div>-->
+        <div class="form-group">
+            <b><font color="red">{{error}}</font></b>
+        </div>
+
+
+
+
+      <div class="row">
+        <div class="navbar-collapse collapse">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                  <th>id</th>
+                  <th>名称</th>
+                  <th>状态</th>
+                  <th>关联步骤</th>
+                  <th>结果</th>
+                  <th>调试信息</th>
+                  <th>步骤详情</th>
+                  <th>执行用例</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for case in cases %}
+                <tr>
+                    <td>{{ case.id }}</td>
+                    <td>
+                      <a href="/admin/sign/case/{{ case.id }}/change/?_popup=1"  target="_blank">{{ case.name }}</a>
+                    </td>
+                    {% if case.status %}
+                        <td><img src="/static/admin/img/icon-yes.svg" alt="True"></td>
+                    {% else %}
+                        <td><img src="/static/admin/img/icon-no.svg" alt="False"></td>
+                    {% endif %}
+                    <td>
+                        <a href="/admin/sign/casestep/?case__id__exact={{case.id}}"  target="_blank">关联</a></td>
+                    </td>
+                    {% if case.result %}
+                        <td><img src="/static/admin/img/icon-yes.svg" alt="True"></td>
+                    {% else %}
+                        <td><img src="/static/admin/img/icon-no.svg" alt="False"></td>
+                    {% endif %}
+                    <td>{{ case.msg }}</td>
+                    <td>
+                        <a href="/case_step_manage/{{ group_id }}/{{ case.id }}/"  target="_self"><font color="blue">查看</font></a></td>
+                    </td>
+                    <td>
+                        <a href="/run_group_case/{{group_id}}/{{ case.id }}/"  target="_self"><font color="red">GO</font></a></td>
+                    </td>
+                    <!--<td><a href="/sign_index2/{{ event.id }}/"  target="{{ event.id }}_self">sign_web</a></td>-->
+                </tr>
+             {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+
+<!--
+        <div class="row">
+            <a href="/admin/sign/case/?group__id__exact={{group_id}}"  target="_self">创建用例</a>
+
+            <form class="navbar-form" method="get" target="_blank"
+                  action="/admin/sign/case/?group__id__exact={{group_id}}">
+                <button type="submit" class="btn btn-success">创建用例</button>
+            </form>
+        </div>-->
+</div>
+{% endblock %}
